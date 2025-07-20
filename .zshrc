@@ -101,7 +101,7 @@ alias vimconfig="cd ~/.config/nvim && nvim ~/.config/nvim/init.lua && cd -"
 alias batconfig="cd ~/.config/bat && nvim ~/.config/bat/config && cd -"
 alias vim="nvim"
 alias lab="cd ~/lab/"
-alias lg = "lazygit"
+alias lg="lazygit"
 
 # If bat installed, alias cat to bat.
 if [[ $(which bat) ]]; then

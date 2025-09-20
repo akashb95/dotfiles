@@ -1,0 +1,31 @@
+# https://github.com/sharkdp/bat -- a better cat.
+brew "bat"
+
+# https://github.com/go-delve/delve -- Go debugger.
+brew "delve"
+
+# https://github.com/eza-community/eza -- modern ls.
+brew "eza"
+
+# https://github.com/sharkdp/fd -- modern find.
+brew "fd"
+
+brew "htop"
+
+brew "jq"
+
+# Editor
+brew "neovim"
+
+# Search
+brew "ripgrep"
+
+# Stern -- K8s log output 
+brew "stern"
+
+brew "tmux"
+
+brew "yq"
+
+# Shell
+brew "zsh"

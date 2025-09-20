@@ -104,30 +104,31 @@ alias lab="cd ~/lab/"
 alias lg="lazygit"
 
 # If bat installed, alias cat to bat.
-if [[ $(which bat) ]]; then
-  alias cat="bat"
-fi
+if type bat >/dev/null 2>&1; then alias cat="bat"; fi;
+# In some Linux distros, bat is called using the name batcat.
+if type batcat >/dev/null 2>&1; then alias cat="batcat"; fi;
 
 # If eza installed, alias ls to eza.
-if [[ $(which eza) ]]; then
-  alias ls="eza"
-
+if type eza >/dev/null 2>&1; then 
+  alias ls="eza"; 
   # eza after cd
   function chpwd() {
       emulate -L zsh
       eza -al
   }
-else
+else 
   # ls after cd
   function chpwd() {
       emulate -L zsh
       ls -alth
   }
-fi
+fi;
 
+# Fuzzy finder.
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-function agr { ag -0 -l -s --nocolor "$1" | AGR_FROM="$1" AGR_TO="$2" xargs -r0 perl -pi -e 's/$ENV{AGR_FROM}/$ENV{AGR_TO}/g'; }
+# Find and replace in files, using ripgrep to find and sed to replace.
+function rgr { rg -0 -l -s "$1" | AGR_FROM="$1" AGR_TO="$2" xargs -r0 perl -pi -e 's/$ENV{AGR_FROM}/$ENV{AGR_TO}/g'; }
 
 # Use nvim as default editor for kube edit cmds.
 export KUBE_EDITOR="nvim"
@@ -139,4 +140,5 @@ if type brew &>/dev/null; then
     compinit
 fi
 
+# Please build autocompletion
 source <(plz --completion_script)

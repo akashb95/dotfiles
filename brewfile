@@ -1,3 +1,6 @@
+tap "homebrew/cask"
+tap "thought-machine/please"
+
 # https://github.com/sharkdp/bat -- a better cat.
 brew "bat"
 
@@ -9,6 +12,11 @@ brew "eza"
 
 # https://github.com/sharkdp/fd -- modern find.
 brew "fd"
+
+brew "git"
+
+# Go language server
+brew "gopls"
 
 brew "htop"
 
@@ -31,3 +39,4 @@ brew "yq"
 
 # Shell
 brew "zsh"
+brew "zsh-autosuggestions"

@@ -3,6 +3,8 @@ tap "thought-machine/please"
 
 # https://github.com/sharkdp/bat -- a better cat.
 brew "bat"
+# https://github.com/eth-p/bat-extras -- using bat in different utility funcs
+brew "bat-extras"
 
 # https://github.com/go-delve/delve -- Go debugger.
 brew "delve"
@@ -40,3 +42,7 @@ brew "yq"
 # Shell
 brew "zsh"
 brew "zsh-autosuggestions"
+
+# Fonts
+cask "font-jetbrains-mono"
+cask "font-jetbrains-mono-nerd-font"

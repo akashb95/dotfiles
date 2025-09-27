@@ -99,6 +99,7 @@ source $ZSH/oh-my-zsh.sh
 alias zshconfig="vim ~/.zshrc && source ~/.zshrc"
 alias vimconfig="cd ~/.config/nvim && nvim ~/.config/nvim/init.lua && cd -"
 alias batconfig="cd ~/.config/bat && nvim ~/.config/bat/config && cd -"
+alias config="cd ~/.config"
 alias vim="nvim"
 alias lab="cd ~/lab/"
 alias lg="lazygit"

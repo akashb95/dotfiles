@@ -103,19 +103,21 @@ alias vim="nvim"
 alias lab="cd ~/lab/"
 alias lg="lazygit"
 
-# If bat installed, alias cat to bat.
-if [[ $(which bat) ]]; then
+if command -v bat &> /dev/null; then
+  # If bat installed, alias cat to bat.
   alias cat="bat"
 fi
 
-# If eza installed, alias ls to eza.
-if [[ $(which eza) ]]; then
-  alias ls="eza"
+if command -v eza &> /dev/null; then
+    # If eza is found, create aliases.
+
+    # Basic alias for 'ls'
+    alias ls='eza'
 
   # eza after cd
   function chpwd() {
       emulate -L zsh
-      eza -al
+      eza -al --git
   }
 else
   # ls after cd
@@ -123,7 +125,7 @@ else
       emulate -L zsh
       ls -alth
   }
-fi
+fi 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

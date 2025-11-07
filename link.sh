@@ -117,6 +117,7 @@ if command -v ya >/dev/null; then
 
     ya pkg add XYenon/clipboard
     ya pkg add Lil-Dank/lazygit
+    ya pkg add yazi-rs/plugins:git
 fi
 
 log "Setup complete!"

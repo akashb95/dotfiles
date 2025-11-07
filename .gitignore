@@ -4,6 +4,8 @@ iterm2/
 mozilla/
 raycast/
 .DS_Store
+yazi/flavors/*
+yazi/plugins/*
 
 .gsd-keyboard.settings-ported
 Cypress/

@@ -1,0 +1,19 @@
+[[plugin.deps]]
+use = "XYenon/clipboard"
+rev = "9089f90"
+hash = "e6efc609de1b617c7e8e98efd5286221"
+
+[[plugin.deps]]
+use = "Lil-Dank/lazygit"
+rev = "8f37dc5"
+hash = "ee71543790f0ce3951161045a3787abd"
+
+[[flavor.deps]]
+use = "yazi-rs/flavors:dracula"
+rev = "f6b425a"
+hash = "c5e49b9e877ca29a3622ec2e35af0b2a"
+
+[[flavor.deps]]
+use = "yazi-rs/flavors:catppuccin-latte"
+rev = "f6b425a"
+hash = "31f2ba594080bfc2a68d054101cdc5f1"

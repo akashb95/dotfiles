@@ -7,6 +7,8 @@ export GOPATH=/Users/akash/lab
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/akash/.oh-my-zsh"
 
+export EDITOR="nvim"
+
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -103,7 +105,10 @@ alias vim="nvim"
 alias lab="cd ~/lab/"
 alias lg="lazygit"
 
-if command -v bat &> /dev/null; then
+if command -v batcat &> /dev/null; then
+  # bat is called batcat on Ubuntu (because the bat name is already taken).
+  alias cat="batcat"
+elif command -v bat &> /dev/null; then
   # If bat installed, alias cat to bat.
   alias cat="bat"
 fi
@@ -117,7 +122,7 @@ if command -v eza &> /dev/null; then
   # eza after cd
   function chpwd() {
       emulate -L zsh
-      eza -al --git
+      eza -1lao --icons=always -s name --git-ignore --git-repos-no-status --no-user --no-filesize
   }
 else
   # ls after cd
@@ -142,3 +147,14 @@ if type brew &>/dev/null; then
 fi
 
 source <(plz --completion_script)
+
+# Yazi -- change the CWD when exiting yazi
+# Press q to quit if you want CWD to change.
+# Press Q to quit of you want to keep the same CWD.
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}

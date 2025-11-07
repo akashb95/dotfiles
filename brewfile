@@ -1,0 +1,65 @@
+tap "homebrew/cask"
+tap "thought-machine/please"
+
+# https://github.com/sharkdp/bat -- a better cat.
+brew "bat"
+# https://github.com/eth-p/bat-extras -- using bat in different utility funcs
+brew "bat-extras"
+
+# https://github.com/go-delve/delve -- Go debugger.
+brew "delve"
+
+# https://github.com/eza-community/eza -- modern ls.
+brew "eza"
+
+brew "ffmpeg"
+
+# https://github.com/sharkdp/fd -- modern find.
+brew "fd"
+
+brew "font-symbols-only-nerd-font"
+
+brew "git"
+
+# Go language server
+brew "gopls"
+
+brew "htop"
+
+brew "imagemagick"
+
+brew "jq"
+
+brew "lazygit"
+
+# Editor
+brew "neovim"
+
+brew "poppler"
+
+brew "resvg"
+
+# Search
+brew "ripgrep"
+
+brew "sevenzip"
+
+# Stern -- K8s log output
+brew "stern"
+
+brew "tmux"
+
+brew "yq"
+
+# TUI file manager: https://yazi-rs.github.io/docs/installation
+brew "yazi"
+
+brew "zoxide"
+
+# Shell
+brew "zsh"
+brew "zsh-autosuggestions"
+
+# Fonts
+cask "font-jetbrains-mono"
+cask "font-jetbrains-mono-nerd-font"

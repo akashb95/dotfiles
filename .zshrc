@@ -101,8 +101,9 @@ source $ZSH/oh-my-zsh.sh
 alias zshconfig="vim ~/.zshrc && source ~/.zshrc"
 alias vimconfig="cd ~/.config/nvim && nvim ~/.config/nvim/init.lua && cd -"
 alias batconfig="cd ~/.config/bat && nvim ~/.config/bat/config && cd -"
+alias config="cd ~/.config"
 alias vim="nvim"
-alias lab="cd ~/lab/"
+alias lab="cd ~/lab"
 alias lg="lazygit"
 
 if command -v batcat &> /dev/null; then
@@ -114,17 +115,17 @@ elif command -v bat &> /dev/null; then
 fi
 
 if command -v eza &> /dev/null; then
-    # If eza is found, create aliases.
+  # If eza is found, create aliases.
 
-    # Basic alias for 'ls'
-    alias ls='eza'
+  # Basic alias for 'ls'
+  alias ls='eza'
 
   # eza after cd
   function chpwd() {
       emulate -L zsh
       eza -1lao --icons=always -s name --git-ignore --git-repos-no-status --no-user --no-filesize
   }
-else
+else 
   # ls after cd
   function chpwd() {
       emulate -L zsh
@@ -132,9 +133,29 @@ else
   }
 fi 
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
 
-function agr { ag -0 -l -s --nocolor "$1" | AGR_FROM="$1" AGR_TO="$2" xargs -r0 perl -pi -e 's/$ENV{AGR_FROM}/$ENV{AGR_TO}/g'; }
+# Options to fzf command
+export FZF_COMPLETION_OPTS='--border --info=inline'
+
+# Advanced customization of fzf options via _fzf_comprun function
+# - The first argument to the function is the name of the command.
+# - You should make sure to pass the rest of the arguments ($@) to fzf.
+_fzf_comprun() {
+  local command=$1
+  shift
+
+  case "$command" in
+    cd)           fzf --preview 'tree -C {} | head -200'   "$@" ;;
+    export|unset) fzf --preview "eval 'echo \$'{}"         "$@" ;;
+    ssh)          fzf --preview 'dig {}'                   "$@" ;;
+    *)            fzf --preview 'bat -n --color=always {}' "$@" ;;
+  esac
+}
+
+# Find and replace in files, using ripgrep to find and sed to replace.
+function rgr { rg -0 -l -s "$1" | AGR_FROM="$1" AGR_TO="$2" xargs -r0 perl -pi -e 's/$ENV{AGR_FROM}/$ENV{AGR_TO}/g'; }
 
 # Use nvim as default editor for kube edit cmds.
 export KUBE_EDITOR="nvim"
@@ -146,6 +167,7 @@ if type brew &>/dev/null; then
     compinit
 fi
 
+# Please build autocompletion
 source <(plz --completion_script)
 
 # Yazi -- change the CWD when exiting yazi

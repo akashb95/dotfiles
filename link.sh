@@ -1,5 +1,3 @@
-#!/bin/sh
-
 # ============================================ HELPERS ==========================================#
 
 log() {
@@ -46,14 +44,6 @@ else
     log "zsh not found, skipping."
 fi;
 
-log "Installing fzf (from source)"
-if [ ! -d "$HOME/.fzf" ]; then
-    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-    ~/.fzf/install --all # Use --all to automate the setup
-else
-    log "fzf already installed."
-fi
-
 log "Installing Rust"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 log "Updating rust"
@@ -98,7 +88,7 @@ case "$(uname -s)" in # Detect OS
         # fd -> fd-find
         # resvg -> librsvg2-bin
         # Note: fzf is also a dep, but is installed from source.
-        sudo apt install -y ffmpeg p7zip-full jq poppler-utils fd-find ripgrep zoxide librsvg2-bin imagemagick
+        sudo apt install -y ffmpeg fzf p7zip-full jq poppler-utils fd-find ripgrep zoxide librsvg2-bin imagemagick
 
         log "Installing yazi-build crate"
         cargo install --force yazi-build

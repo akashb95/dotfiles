@@ -44,14 +44,17 @@ brew "ripgrep"
 
 brew "sevenzip"
 
-# Stern -- K8s log output
+# Search
+brew "ripgrep"
+
+# Stern -- K8s log output 
 brew "stern"
 
 brew "tmux"
 
 brew "yq"
 
-# TUI file manager: https://yazi-rs.github.io/docs/installation
+# Terminal file manager: https://yazi-rs.github.io/docs/installation
 brew "yazi"
 
 brew "zoxide"

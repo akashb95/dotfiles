@@ -1,0 +1,13 @@
+[[mgr.prepend_keymap]]
+on   = [ "g", "i", "t" ]
+run  = "plugin lazygit"
+desc = "run lazygit"
+
+[[mgr.prepend_keymap]]
+on  = [ "g", "y" ]
+run = [ "yank", 'plugin clipboard -- --action=copy --notify-unknown-display-server' ]
+
+[[mgr.prepend_keymap]]
+on = "<C-p>"
+run = 'shell -- qlmanage -p "$@"'
+

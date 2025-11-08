@@ -12,11 +12,15 @@ brew "delve"
 # https://github.com/eza-community/eza -- modern ls.
 brew "eza"
 
+brew "ffmpeg"
+
 # https://github.com/sharkdp/fd -- modern find.
 brew "fd"
 
 # https://github.com/junegunn/fzf -- fuzzy finder
 brew "fzf"
+
+brew "font-symbols-only-nerd-font"
 
 brew "git"
 
@@ -25,12 +29,23 @@ brew "gopls"
 
 brew "htop"
 
+brew "imagemagick"
+
 brew "jq"
 
 brew "lazygit"
 
 # Editor
 brew "neovim"
+
+brew "poppler"
+
+brew "resvg"
+
+# Search
+brew "ripgrep"
+
+brew "sevenzip"
 
 # Search
 brew "ripgrep"
@@ -41,6 +56,11 @@ brew "stern"
 brew "tmux"
 
 brew "yq"
+
+# Terminal file manager: https://yazi-rs.github.io/docs/installation
+brew "yazi"
+
+brew "zoxide"
 
 # Shell
 brew "zsh"

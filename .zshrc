@@ -7,6 +7,8 @@ export GOPATH=/Users/akash/lab
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/akash/.oh-my-zsh"
 
+export EDITOR="nvim"
+
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -101,21 +103,27 @@ alias vimconfig="cd ~/.config/nvim && nvim ~/.config/nvim/init.lua && cd -"
 alias batconfig="cd ~/.config/bat && nvim ~/.config/bat/config && cd -"
 alias config="cd ~/.config"
 alias vim="nvim"
-alias lab="cd ~/lab/"
+alias lab="cd ~/lab"
 alias lg="lazygit"
 
-# If bat installed, alias cat to bat.
-if type bat >/dev/null 2>&1; then alias cat="bat"; fi;
-# In some Linux distros, bat is called using the name batcat.
-if type batcat >/dev/null 2>&1; then alias cat="batcat"; fi;
+if command -v batcat &> /dev/null; then
+  # bat is called batcat on Ubuntu (because the bat name is already taken).
+  alias cat="batcat"
+elif command -v bat &> /dev/null; then
+  # If bat installed, alias cat to bat.
+  alias cat="bat"
+fi
 
-# If eza installed, alias ls to eza.
-if type eza >/dev/null 2>&1; then 
-  alias ls="eza"; 
+if command -v eza &> /dev/null; then
+  # If eza is found, create aliases.
+
+  # Basic alias for 'ls'
+  alias ls='eza'
+
   # eza after cd
   function chpwd() {
       emulate -L zsh
-      eza -al
+      eza -1lao --icons=always -s name --git-ignore --git-repos-no-status --no-user --no-filesize
   }
 else 
   # ls after cd
@@ -123,7 +131,7 @@ else
       emulate -L zsh
       ls -alth
   }
-fi;
+fi 
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
@@ -161,3 +169,14 @@ fi
 
 # Please build autocompletion
 source <(plz --completion_script)
+
+# Yazi -- change the CWD when exiting yazi
+# Press q to quit if you want CWD to change.
+# Press Q to quit of you want to keep the same CWD.
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}

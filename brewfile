@@ -15,6 +15,9 @@ brew "eza"
 # https://github.com/sharkdp/fd -- modern find.
 brew "fd"
 
+# https://github.com/junegunn/fzf -- fuzzy finder
+brew "fzf"
+
 brew "git"
 
 # Go language server

@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # ============================================ HELPERS ==========================================#
 
 log() {
@@ -6,9 +8,9 @@ log() {
 
   # Empty message translates to a newline.
   if [ -z "$message" ] || [ "$message" = "\n" ]; then
-    log "" # Print a blank line
+    echo "" # Print a blank line
   else
-    log "$prefix $message\n"
+    echo "$prefix $message\n"
   fi
 }
 

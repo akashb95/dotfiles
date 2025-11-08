@@ -1,4 +1,3 @@
-tap "homebrew/cask"
 tap "thought-machine/please"
 
 # https://github.com/sharkdp/bat -- a better cat.
@@ -19,8 +18,6 @@ brew "fd"
 
 # https://github.com/junegunn/fzf -- fuzzy finder
 brew "fzf"
-
-brew "font-symbols-only-nerd-font"
 
 brew "git"
 
@@ -69,3 +66,4 @@ brew "zsh-autosuggestions"
 # Fonts
 cask "font-jetbrains-mono"
 cask "font-jetbrains-mono-nerd-font"
+cask "font-symbols-only-nerd-font"

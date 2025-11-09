@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# Exit immediately if any command fails
+set -e
+
 # ============================================ HELPERS ==========================================#
 
 log() {
@@ -37,26 +40,31 @@ is_debian() {
 
 # ============================================ HELPERS ==========================================#
 
-log "Linking Zsh config"
-# Use command -v for POSIX compatibility
+# Configure shell.
 if command -v zsh >/dev/null; then
-    ln -s ~/.config/.zshrc ~/.zshrc
-    log "Linked ~/.zshrc."
+    # Do not overwrite any existing .zshrc.
+    if [ -e "$HOME/.zshrc" ]; then
+        log "$HOME/.zshrc already exists. Skipping link."
+    else
+        ln -s "$HOME/.config/.zshrc" "$HOME/.zshrc"
+        log "Linked $HOME/.zshrc."
+    fi
+
 else
     log "zsh not found, skipping."
 fi;
 
-log "Installing Rust"
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+# Add rustup to path.
+if ! command -v rustup >/dev/null; then 
+    log "Installing Rust"
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+fi
+
 log "Updating rust"
 rustup update
-if command -v zsh >/dev/null; then
-    log "Sourcing .zshrc to include rust toolchain"
-    source ~/.zshrc
-else
-    log "Sourcing .bashrc to include rust toolchain"
-    source ~/.bashrc
-fi
+
+log "❗You may need to manually ensure the Rust toolchain is in path: $PATH"
+log "If not in path, source your shell config manually and rerun this script."
 
 log "Installing Yazi"
 case "$(uname -s)" in # Detect OS
@@ -104,12 +112,7 @@ esac
 
 if command -v ya >/dev/null; then
     log "Installing Yazi packages"
-    ya pkg add yazi-rs/flavors:dracula
-    ya pkg add yazi-rs/flavors:catppuccin-latte
-
-    ya pkg add XYenon/clipboard
-    ya pkg add Lil-Dank/lazygit
-    ya pkg add yazi-rs/plugins:git
+    ya pkg install
 fi
 
 log "Setup complete!"

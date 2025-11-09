@@ -71,8 +71,6 @@ export EDITOR="nvim"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git kubectl zsh-syntax-highlighting)
 
-source $ZSH/oh-my-zsh.sh
-
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -180,3 +178,7 @@ function y() {
 	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
 	rm -f -- "$tmp"
 }
+
+# Source this last because we can live without oh-my-zsh.
+source $ZSH/oh-my-zsh.sh
+

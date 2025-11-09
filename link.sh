@@ -97,7 +97,6 @@ case "$(uname -s)" in # Detect OS
         # poppler -> poppler-utils
         # fd -> fd-find
         # resvg -> librsvg2-bin
-        # Note: fzf is also a dep, but is installed from source.
         sudo apt install -y ffmpeg fzf p7zip-full jq poppler-utils fd-find ripgrep zoxide librsvg2-bin imagemagick
 
         log "Installing yazi-build crate"

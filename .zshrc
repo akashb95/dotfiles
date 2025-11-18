@@ -96,6 +96,9 @@ plugins=(git kubectl zsh-syntax-highlighting)
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+#
+source $ZSH/oh-my-zsh.sh
+
 alias zshconfig="vim ~/.zshrc && source ~/.zshrc"
 alias vimconfig="cd ~/.config/nvim && nvim ~/.config/nvim/init.lua && cd -"
 alias batconfig="cd ~/.config/bat && nvim ~/.config/bat/config && cd -"
@@ -133,6 +136,7 @@ fi
 
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
+FZF_CTRL_R_COMMAND= FZF_ALT_C_COMMAND= source <(fzf --zsh)
 
 # Options to fzf command
 export FZF_COMPLETION_OPTS='--border --info=inline'
@@ -178,7 +182,4 @@ function y() {
 	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
 	rm -f -- "$tmp"
 }
-
-# Source this last because we can live without oh-my-zsh.
-source $ZSH/oh-my-zsh.sh
 

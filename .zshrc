@@ -5,7 +5,7 @@ export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:/opt/homebr
 export GOPATH=/Users/akash/lab
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/akash/.oh-my-zsh"
+export ZSH="/run/current-system/sw/share/oh-my-zsh"
 
 export EDITOR="nvim"
 
@@ -69,7 +69,7 @@ export EDITOR="nvim"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git kubectl zsh-syntax-highlighting)
+plugins=(git kubectl)
 
 # User configuration
 
@@ -114,6 +114,8 @@ elif command -v bat &> /dev/null; then
   # If bat installed, alias cat to bat.
   alias cat="bat"
 fi
+
+source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
 
 if command -v eza &> /dev/null; then
   # If eza is found, create aliases.

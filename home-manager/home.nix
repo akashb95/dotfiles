@@ -57,6 +57,9 @@
     # Go
     delve              # Debugger
     gopls              # Language Server
+
+    # Rust
+    rust-analyzer
     
     # Media
     ffmpeg

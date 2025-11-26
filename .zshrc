@@ -171,9 +171,6 @@ if type brew &>/dev/null; then
     compinit
 fi
 
-# Please build autocompletion
-source <(plz --completion_script)
-
 # Yazi -- change the CWD when exiting yazi
 # Press q to quit if you want CWD to change.
 # Press Q to quit of you want to keep the same CWD.
@@ -185,3 +182,7 @@ function y() {
 	rm -f -- "$tmp"
 }
 
+# Please build autocompletion
+if command -v plz &> /dev/null; then
+  source <(plz --completion_script)
+fi

@@ -36,7 +36,6 @@
     # '')
     # Utilities
     bat
-    # bat-extras
     eza                # Modern ls
     fd                 # Modern find
     fzf
@@ -47,6 +46,8 @@
     _7zz               # The modern 7-zip (equivalent to brew 'sevenzip')
     poppler_utils      # Contains the CLI tools (pdfinfo, etc.) usually included in brew 'poppler'
     resvg
+
+    pkgs-unstable.gemini-cli
     
     # Development
     git
@@ -68,6 +69,9 @@
     # Monitoring / Logs
     htop
     # stern              # K8s logs
+
+    zellij
+
     
     # Shell & File Management
     zsh

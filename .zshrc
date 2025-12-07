@@ -4,8 +4,20 @@ export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:/opt/homebr
 
 export GOPATH=/Users/akash/lab
 
-# Path to your oh-my-zsh installation.
-export ZSH="/run/current-system/sw/share/oh-my-zsh"
+# Is this NixOS?
+[[ -f /etc/NIXOS ]] && IS_NIXOS=true || IS_NIXOS=false
+
+# Path to ZSH installation.
+if [[ "$OSTYPE" == "darwin"* ]]; then
+  # MacOS
+  export ZSH="$HOME/.oh-my-zsh"
+elif $IS_NIXOS; then
+  # NixOS
+  export ZSH="/run/current-system/sw/share/oh-my-zsh"
+fi
+if [[ ! -d "$ZSH" ]]; then
+  echo "Warning: oh-my-zsh not found at $ZSH"
+fi
 
 export EDITOR="nvim"
 
@@ -115,7 +127,9 @@ elif command -v bat &> /dev/null; then
   alias cat="bat"
 fi
 
-source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
+if $IS_NIXOS; then
+  source $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
+fi;
 
 if command -v eza &> /dev/null; then
   # If eza is found, create aliases.

@@ -70,6 +70,7 @@
     htop
     # stern              # K8s logs
 
+    zed-editor
     zellij
 
     

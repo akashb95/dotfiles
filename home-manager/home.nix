@@ -60,6 +60,7 @@
     gopls              # Language Server
 
     # Rust
+    pkgs-unstable.lspmux
     rust-analyzer
     
     # Media

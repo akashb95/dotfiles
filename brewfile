@@ -47,6 +47,8 @@ brew "sevenzip"
 # Search
 brew "ripgrep"
 
+brew "starship"
+
 # Stern -- K8s log output 
 brew "stern"
 

@@ -200,3 +200,5 @@ function y() {
 if command -v plz &> /dev/null; then
   source <(plz --completion_script)
 fi
+
+eval "$(starship init zsh)"

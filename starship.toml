@@ -1,0 +1,83 @@
+# Inserts a blank line between shell prompts
+add_newline = true
+
+# Ergonomic 2-line prompt structure
+format = """
+[╭─](bold blue)\
+$sudo\
+$kubernetes\
+$directory\
+${custom.git_parent_branch}\
+$git_branch\
+$git_status\
+$python\
+$golang\
+$lua\
+$nix_shell\
+$nodejs
+$character """
+
+[character]
+# The symbol to show if the previous command succeeded
+success_symbol = "[╰─❯](bold blue)"
+# The symbol to show if the previous command failed
+error_symbol = "[╰─❯](red)"
+
+[directory]
+truncation_length = 100
+truncate_to_repo = true
+format = "[ $path ](bold cyan)"
+
+# Highlights the repo name in purple, and the path from the git root in cyan
+repo_root_format = "[ $repo_root](bold purple)[/$path ](bold cyan)"
+
+[git_branch]
+format = "[─](bold blue)[ 🌿 $branch ](bold green)"
+
+[custom.git_parent_branch]
+# Fetches the upstream tracking branch (if set)
+command = "git rev-parse --abbrev-ref @{upstream} 2>/dev/null"
+when = "git rev-parse --is-inside-work-tree 2>/dev/null"
+format = "[─](bold blue)[ ↰ $output ](bold yellow)"
+
+[git_status]
+# Only displays the ahead/behind information
+format = "[─](bold blue)[ $all_status$ahead_behind ](bold cyan)"
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇡${ahead} ⇣${behind}"
+# Hides the module if you are perfectly up-to-date with upstream
+up_to_date = ""
+
+# Icons for uncommitted and untracked changes
+modified = "[✍🏽 ](bold yellow)"
+staged = "[✅ ](bold green)"
+untracked = "[⁇ ](red)"
+
+[golang]
+symbol = ""
+version_format = "Go ${raw}"
+
+[lua]
+symbol = ""
+version_format = "Lua ${raw}"
+
+[nodejs]
+symbol = ""
+version_format = " ${raw}"
+
+[python]
+pyenv_version_name = true
+python_binary = "python3"
+symbol = ""
+version_format = "Py ${raw}"
+
+[sudo]
+symbol = "💪🏽 "
+
+[kubernetes]
+detect_files = ['k8s']
+disabled = false
+format = '[$symbol$context( \($namespace\))]($style) '
+style = 'cyan bold'
+symbol = '☸ '

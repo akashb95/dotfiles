@@ -40,6 +40,26 @@ is_debian() {
 
 # ============================================ HELPERS ==========================================#
 
+# Set up .envrc
+if [ ! -f "$HOME/.envrc" ]; then
+    if [ -f "$HOME/.config/.envrc.template" ]; then
+        log "Copying .envrc.template to $HOME/.envrc"
+        cp "$HOME/.config/.envrc.template" "$HOME/.envrc"
+    else
+        log "Warning: $HOME/.config/.envrc.template not found."
+    fi
+else
+    log "$HOME/.envrc already exists. Skipping copy."
+fi
+
+# Link .envrc to the root of the .config/nvim directory if needed
+if [ ! -e "$HOME/.config/nvim/.envrc" ] && [ -f "$HOME/.envrc" ]; then
+    log "Linking $HOME/.envrc to $HOME/.config/nvim/.envrc"
+    ln -s "$HOME/.envrc" "$HOME/.config/nvim/.envrc"
+elif [ -e "$HOME/.config/nvim/.envrc" ]; then
+    log "$HOME/.config/nvim/.envrc already exists. Skipping link."
+fi
+
 # Configure shell.
 if command -v zsh >/dev/null; then
     # Do not overwrite any existing .zshrc.

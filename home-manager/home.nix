@@ -54,6 +54,9 @@
     lazygit
     neovim
     tmux
+
+    # Postgres
+    pkgs-unstable.pgcli
     
     # Go
     delve              # Debugger
@@ -79,10 +82,6 @@
     zsh
     zsh-autosuggestions
     pkgs-unstable.yazi
-
-    # jetbrains-mono
-    # nerd-fonts.jetbrains-mono  # Replaces cask "font-jetbrains-mono-nerd-font"
-    # nerd-fonts.symbols-only    # Replaces cask "font-symbols-only-nerd-font"
 ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

@@ -8,6 +8,8 @@ brew "bat-extras"
 # https://github.com/go-delve/delve -- Go debugger.
 brew "delve"
 
+brew "direnv"
+
 # https://github.com/eza-community/eza -- modern ls.
 brew "eza"
 

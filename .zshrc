@@ -201,4 +201,6 @@ if command -v plz &> /dev/null; then
   source <(plz --completion_script)
 fi
 
+eval "$(direnv hook zsh)"
+
 eval "$(starship init zsh)"

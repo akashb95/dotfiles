@@ -1,8 +1,4 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH:/opt/homebrew/bin
-export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:/opt/homebrew/opt/libpq/bin:/Users/akash/flutter/bin:$PATH:/Users/akash/.local/share/nvim/mason/bin"
-
-export GOPATH=/Users/akash/lab
+export PATH="/home/akash-bhattacharya/.local/share/nvim/mason/bin:$PATH"
 
 # Is this NixOS?
 [[ -f /etc/NIXOS ]] && IS_NIXOS=true || IS_NIXOS=false
@@ -203,4 +199,6 @@ fi
 
 eval "$(direnv hook zsh)"
 
-eval "$(starship init zsh)"
+if command -v starship &> /dev/null; then
+  eval "$(starship init zsh)"
+fi

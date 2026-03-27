@@ -1,3 +1,6 @@
+[manager]
+hide = [ "__pycache__" ]
+
 [plugin]
 prepend_previewers = [
 	# HEIC previewer

@@ -9,7 +9,7 @@ prepend_previewers = [
 
 append_previewers = [
 	# My fallback previewer
-	{ name = "*", run = "binary" },
+	{ url = "*", run = "binary" },
 ]
 
 prepend_preloaders = [
@@ -19,10 +19,12 @@ prepend_preloaders = [
 
 [[plugin.prepend_fetchers]]
 id   = "git"
-name = "*"
+url = "*"
 run  = "git"
+group = "git"
 
 [[plugin.prepend_fetchers]]
 id   = "git"
-name = "*/"
+url = "*/"
 run  = "git"
+group = "git"

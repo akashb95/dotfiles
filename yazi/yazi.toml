@@ -1,5 +1,27 @@
 [manager]
 hide = [ "__pycache__" ]
+linemode = "size"
+sort_by = "alphabetical"
+sort_dir_first = true
+
+[preview]
+max_width = 960     # limit large image previews
+max_height = 600
+image_filter = "lanczos3"  # best quality for downsampling
+cache_dir = "~/.cache/yazi"  # persistent cache
+
+[opener]
+edit = [
+ { run = "$EDITOR %s", block = true, for = "unix" },
+]
+
+[open]
+open = [
+ { run = "xdg-open %s", desc = "Open" },
+]
+
+[input]
+cursor_blink = false
 
 [plugin]
 prepend_previewers = [
@@ -17,14 +39,8 @@ prepend_preloaders = [
 	{ mime = "image/heic", run = "heic" },
 ]
 
-[[plugin.prepend_fetchers]]
-id   = "git"
-url = "*"
-run  = "git"
-group = "git"
-
-[[plugin.prepend_fetchers]]
-id   = "git"
-url = "*/"
-run  = "git"
-group = "git"
+prepend_fetchers = [
+	# Git fetcher for repositories
+	{ url = "*", run = "git", group = "git_file" },
+	{ url = "*/", run = "git", group = "git_dir" },
+]

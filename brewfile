@@ -37,6 +37,8 @@ brew "lazygit"
 # Editor
 brew "neovim"
 
+brew "ollama"
+
 brew "poppler"
 
 brew "resvg"

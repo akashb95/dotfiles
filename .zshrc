@@ -202,3 +202,6 @@ eval "$(direnv hook zsh)"
 if command -v starship &> /dev/null; then
   eval "$(starship init zsh)"
 fi
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+

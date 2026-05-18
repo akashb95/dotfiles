@@ -1,75 +1,62 @@
 tap "thought-machine/please"
-
-# https://github.com/sharkdp/bat -- a better cat.
+# Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
-# https://github.com/eth-p/bat-extras -- using bat in different utility funcs
+# Bash scripts that integrate bat with various command-line tools
 brew "bat-extras"
-
-# https://github.com/go-delve/delve -- Go debugger.
+# Debugger for the Go programming language
 brew "delve"
-
+# Load/unload environment variables based on $PWD
 brew "direnv"
-
-# https://github.com/eza-community/eza -- modern ls.
+# Modern, maintained replacement for ls
 brew "eza"
-
-brew "ffmpeg"
-
-# https://github.com/sharkdp/fd -- modern find.
+# Simple, fast and user-friendly alternative to find
 brew "fd"
-
-# https://github.com/junegunn/fzf -- fuzzy finder
+# Play, record, convert, and stream select audio and video codecs
+brew "ffmpeg"
+# Command-line fuzzy finder written in Go
 brew "fzf"
-
+# Distributed revision control system
 brew "git"
-
-# Go language server
+# Language server for the Go language
 brew "gopls"
-
+# Improved top (interactive process viewer)
 brew "htop"
-
+# Tools and libraries to manipulate images in select formats
 brew "imagemagick"
-
+# Lightweight and flexible command-line JSON processor
 brew "jq"
-
+# Simple terminal UI for git commands
 brew "lazygit"
-
-# Editor
+# Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
-
+# Create, run, and share large language models (LLMs)
 brew "ollama"
-
+# PDF rendering library (based on the xpdf-3.0 code base)
 brew "poppler"
-
+# SVG rendering tool and library
 brew "resvg"
-
-# Search
+# Search tool like grep and The Silver Searcher
 brew "ripgrep"
-
+# 7-Zip is a file archiver with a high compression ratio
 brew "sevenzip"
-
-# Search
-brew "ripgrep"
-
+# Cross-shell prompt for astronauts
 brew "starship"
-
-# Stern -- K8s log output 
+# Tail multiple Kubernetes pods & their containers
 brew "stern"
-
+# Terminal multiplexer
 brew "tmux"
-
-brew "yq"
-
-# Terminal file manager: https://yazi-rs.github.io/docs/installation
+# Blazing fast terminal file manager written in Rust, based on async I/O
 brew "yazi"
-
+# Process YAML, JSON, XML, CSV and properties documents from the CLI
+brew "yq"
+# Shell extension to navigate your filesystem faster
 brew "zoxide"
-
-# Shell
+# UNIX shell (command interpreter)
 brew "zsh"
+# Fish-like fast/unobtrusive autosuggestions for zsh
 brew "zsh-autosuggestions"
-
-# Fonts
 cask "font-jetbrains-mono"
 cask "font-jetbrains-mono-nerd-font"
 cask "font-symbols-only-nerd-font"
+# Control your tools with a few keystrokes
+cask "raycast"
